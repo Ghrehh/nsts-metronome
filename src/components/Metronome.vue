@@ -2,20 +2,15 @@
 <div class="page">
   <display/>
 
-  <time-signatures :time-signatures='timeSignatures'/>
+  <time-signatures :time-signatures='[]'/>
 
   <div class='buttons-container'>
-    <div
-      v-on:click='toggleMetronomeOn'
-      :class='toggleButtonCSS'
-    >
+    <div v-on:click='toggleMetronomeOn' :class='toggleButtonCSS'>
       <metronome-svg />
       <p class='text'>{{ toggleButtonText }}</p>
     </div>
-    <p
-      class='button edit-button'
-      v-if='false'
-    >
+
+    <p class='button edit-button' v-if='false'>
       EDIT
     </p>
   </div>
@@ -24,14 +19,12 @@
 
 <script>
 import Display from './Display';
-import Modal from './Modal';
 import TimeSignatures from './TimeSignatures';
 import MetronomeSVG from './MetronomeSVG';
 
 export default {
   components: {
     Display,
-    Modal,
     TimeSignatures,
     'metronome-svg': MetronomeSVG
   },
@@ -45,9 +38,6 @@ export default {
     toggleButtonCSS() {
       const modifier = this.$store.state.metronomeOn ? 'stop' : 'start';
       return `button toggle-metronome-button ${modifier}`;
-    },
-    timeSignatures() {
-      return this.$store.state.timeSignatures;
     }
   },
   methods: {

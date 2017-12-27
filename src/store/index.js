@@ -7,7 +7,6 @@ Vue.use(Vuex);
 const state = {
   bpm: 120,
   metronomeOn: false,
-  timeSignatures: [{ numerator: 4, denominator: 4 }],
   beatsPerMeasure: 4
 };
 
