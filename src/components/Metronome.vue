@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     toggleMetronomeOn() {
-      this.$store.dispatch({
+      this.$store.commit({
         type: 'toggleMetronome',
       })
     },

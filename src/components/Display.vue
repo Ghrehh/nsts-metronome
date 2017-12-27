@@ -41,19 +41,19 @@ export default {
     decrementBPM() {
       this.$store.commit({
         type: 'changeBPM',
-        amount: this.$store.state.bpm - 1
+        bpm: this.$store.state.bpm - 1
       })
     },
     incrementBPM() {
       this.$store.commit({
         type: 'changeBPM',
-        amount: this.$store.state.bpm + 1
+        bpm: this.$store.state.bpm + 1
       })
     },
     changeBPM(event){
       this.$store.commit({
         type: 'changeBPM',
-        amount: event 
+        bpm: event 
       })
     }
   },
