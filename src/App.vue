@@ -7,6 +7,7 @@
 
 <style lang="scss">
 @import './style/_reset.scss';
+@import './style/_colors.scss';
 
 @font-face {
   font-family: "envy";
@@ -29,6 +30,24 @@ p, a, div, li, h1, h2, h3, h4, h5 {
   cursor: pointer;
   border-radius: 2px;
   user-select: none;
+}
+
+.decrement-button {
+  background-color: $red;
+  color: white;
+
+  &:hover {
+    background-color: $red-hover;
+  }
+}
+
+.increment-button {
+  background-color: $green;
+  color: white;
+
+  &:hover {
+    background-color: $green-hover;
+  }
 }
 
 </style>

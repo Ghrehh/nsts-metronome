@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Page from '@/components/Page';
+import Metronome from '@/components/Metronome';
 
 Vue.use(Router);
 
 const routes = [
-  { path: '/', component: Page },
+  { path: '/', component: Metronome },
 ];
 
 export default new Router({

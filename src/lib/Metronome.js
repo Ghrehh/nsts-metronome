@@ -5,10 +5,9 @@ const getFile = (accent) => {
 };
 
 export default class Metronome {
-  constructor({ bpm, timeSignatures }) {
+  constructor(state) {
     this.player = new Howl({ src: [getFile()] });
-    this.timeSignatures = timeSignatures;
-    this.bpm = bpm;
+    this.state = state;
 
     this.on = false;
 
@@ -43,7 +42,7 @@ export default class Metronome {
 
   _waitTime() {
     const minute = 60000;
-    return ( minute / this.bpm)
+    return ( minute / this.state.bpm)
   }
 
   _play() {

@@ -1,7 +1,28 @@
 <template>
-  <div>
-    <h2 class='title'>Time Signatures</h2>
-    <div class='time-signatures'>
+  <div class='time-signatures-container'>
+    <h2 class='title'>Beats Per Measure</h2>
+
+    <div class='button-container'>
+      <p @click='decrementBeatsPerMeasure' class='button decrement-button'>
+        -
+      </p>
+
+      <p class='beats-per-measure'>{{ beatsPerMeasure }}</p>
+
+      <p @click='incrementBeatsPerMeasure' class='button increment-button'>
+        +
+      </p>
+    </div>
+
+    <slider 
+      cssClass='beats-per-measure-slider'
+      :on-value-change='changeBeatsPerMeasure'
+      :value='beatsPerMeasure'
+      :min='1'
+      :max='32'
+    />
+
+    <div v-if="false" class='time-signatures'>
       <div
         v-for='timeSignature in timeSignatures'
         class='time-signature'
@@ -14,22 +35,57 @@
 </template>
 
 <script>
+import Slider from './Slider';
+
 export default {
+  components: {
+    Slider
+  },
   props: {
     timeSignatures: {
       type: Array,
       required: true
     }
+  },
+  computed: {
+    beatsPerMeasure() {
+      return this.$store.state.beatsPerMeasure;
+    }
+  },
+  methods: {
+    incrementBeatsPerMeasure() {
+      this.$store.commit({
+        type: 'changeBeatsPerMeasure',
+        beatsPerMeasure: this.$store.state.beatsPerMeasure + 1
+      })
+    },
+    decrementBeatsPerMeasure() {
+      this.$store.commit({
+        type: 'changeBeatsPerMeasure',
+        beatsPerMeasure: this.$store.state.beatsPerMeasure - 1
+      })
+    },
+    changeBeatsPerMeasure(event) {
+      this.$store.commit({
+        type: 'changeBeatsPerMeasure',
+        beatsPerMeasure: event
+      })
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../style/_colors.scss';
+
+.time-signatures-container {
+  margin-bottom: 30px;
+}
 
 .title {
   color: white;
-  margin-bottom: 10px;
+  font-size: 23px;
+  margin-bottom: 20px;
 }
 
 .time-signatures {
@@ -46,6 +102,42 @@ export default {
     color: white;
     border-radius: 2px;
     margin: 0 8px;
+  }
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .beats-per-measure {
+    color: $yellow;
+    font-size: 35px;
+    margin: 0 20px;
+  }
+}
+
+.beats-per-measure-slider {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0 25px;
+  box-sizing: border-box;
+
+  .vue-slider-piecewise {
+    background-color: $pale-yellow;
+  }
+
+  .vue-slider-process {
+    background-color: $yellow;
+  }
+
+  .vue-slider-dot {
+    background-color: $display-grey;
+
+    &:hover {
+      background-color: $display-grey-dark;
+    }
   }
 }
 </style>

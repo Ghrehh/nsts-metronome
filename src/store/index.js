@@ -7,19 +7,22 @@ Vue.use(Vuex);
 const state = {
   bpm: 120,
   metronomeOn: false,
-  timeSignatures: [
-    { numerator: 4, denominator: 4 },
-  ]
+  timeSignatures: [{ numerator: 4, denominator: 4 }],
+  beatsPerMeasure: 4
 };
 
 const mutations = {
   changeBPM(state, payload) {
-    state.bpm += payload.amount;
+    state.bpm = payload.amount;
   },
 
   toggleMetronome(state) {
     state.metronomeOn = !state.metronomeOn;
   },
+
+  changeBeatsPerMeasure(state, payload) {
+    state.beatsPerMeasure = payload.beatsPerMeasure;
+  }
 };
 
 const actions = {

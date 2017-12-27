@@ -1,17 +1,20 @@
 <template>
 <div class="page">
-  <metronome-off-display v-if='!metronomeOn' />
-  <metronome-on-display v-if='metronomeOn' />
+  <display/>
+
   <time-signatures :time-signatures='timeSignatures'/>
+
   <div class='buttons-container'>
-    <p
+    <div
       v-on:click='toggleMetronomeOn'
       :class='toggleButtonCSS'
     >
-      {{ toggleButtonText }}
-    </p>
+      <metronome-svg />
+      <p class='text'>{{ toggleButtonText }}</p>
+    </div>
     <p
       class='button edit-button'
+      v-if='false'
     >
       EDIT
     </p>
@@ -20,17 +23,17 @@
 </template>
 
 <script>
-import MetronomeOffDisplay from './display/MetronomeOffDisplay';
-import MetronomeOnDisplay from './display/MetronomeOnDisplay';
+import Display from './Display';
 import Modal from './Modal';
 import TimeSignatures from './TimeSignatures';
+import MetronomeSVG from './MetronomeSVG';
 
 export default {
   components: {
-    MetronomeOffDisplay,
-    MetronomeOnDisplay,
+    Display,
     Modal,
-    TimeSignatures
+    TimeSignatures,
+    'metronome-svg': MetronomeSVG
   },
   computed: {
     metronomeOn() {
@@ -84,7 +87,8 @@ export default {
   }
 
   .toggle-metronome-button {
-    margin-right: 10px;
+    font-size: 40px;
+    padding: 12px 19px;
   }
 
   .toggle-metronome-button.start {
@@ -93,6 +97,15 @@ export default {
 
     &:hover {
       background-color: $green-hover;
+    }
+  }
+
+  .toggle-metronome-button {
+    display: flex;
+    align-items: center;
+
+    .text {
+      margin-left: 8px;
     }
   }
 
