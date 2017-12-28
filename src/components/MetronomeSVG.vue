@@ -30,13 +30,12 @@
   .metronome-svg {
     opacity: 0.25;
   }
-
-  &:hover {
-  }
 }
 
 .toggle-metronome-button:hover, .toggle-metronome-button.stop {
   .stick-inner {
+    transform-origin: center bottom;
+
     animation: pulse 1.5s infinite;
     transform-origin: bottom 12.9524px;
     animation-timing-function: linear;
