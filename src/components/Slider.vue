@@ -55,8 +55,8 @@ export default {
   }
 
   .vue-slider-dot {
-    box-shadow: none;
-    border-radius: 2px;
+    box-shadow: none !important;
+    border-radius: 2px !important;
     height: 32px !important;
     top: -11px !important;
   }

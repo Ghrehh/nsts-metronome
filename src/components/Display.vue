@@ -98,7 +98,7 @@ export default {
     }
 
     .vue-slider-process {
-      background-color: $blue;
+      background-color: $blue !important;
     }
 
     .vue-slider-dot {
