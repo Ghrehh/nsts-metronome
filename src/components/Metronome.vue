@@ -58,7 +58,7 @@ export default {
 @import '../style/_mixins.scss';
 
 .page {
-  padding: 20px 20px 0;
+  padding: 20px 20px 40px;
   background-color: $background-black;
   height: 100%;
   text-align: center;

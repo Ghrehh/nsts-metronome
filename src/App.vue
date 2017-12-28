@@ -17,6 +17,7 @@
 
 html, body {
   height: 100%;
+  background-color: $background-black;
 }
 
 p, a, div, li, h1, h2, h3, h4, h5 {
