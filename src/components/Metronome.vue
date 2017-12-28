@@ -86,6 +86,7 @@ export default {
     padding: 12px 19px;
     display: flex;
     align-items: center;
+    position: relative;
 
     .text {
       margin-left: 8px;
@@ -98,9 +99,10 @@ export default {
     @include box-shadow(0, 5px, $green-hover);
 
     &:hover {
-      position: relative;
-      top: 2px;
-      @include box-shadow(0, 3px, $green-hover);
+      @media (min-width: 450px) {
+        top: 2px;
+        @include box-shadow(0, 3px, $green-hover);
+      }
     }
 
     &:active {
@@ -114,11 +116,13 @@ export default {
     background-color: $red;
     color: white;
     @include box-shadow(0, 5px, $red-hover);
+    position: relative;
 
     &:hover {
-      position: relative;
-      top: 2px;
-      @include box-shadow(0, 3px, $red-hover);
+      @media (min-width: 450px) {
+        top: 2px;
+        @include box-shadow(0, 3px, $red-hover);
+      }
     }
 
     &:active {
