@@ -44,6 +44,7 @@ p, a, div, li, h1, h2, h3, h4, h5 {
 .increment-button {
   background-color: $green;
   color: white;
+  padding: 10px 9px 10px 11px;
 
   &:hover {
     background-color: $green-hover;
