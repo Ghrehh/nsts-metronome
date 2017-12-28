@@ -26,6 +26,17 @@ describe('store mutations', () => {
     });
   });
 
+  describe('changeCurrentBeat', () => {
+    const state = { currentBeat: 0 };
+    const payload = { currentBeat: 1 }
+
+    mutations.changeCurrentBeat(state, payload);
+
+    it('changes the currentBeat state', () => {
+      expect(state).toEqual({ currentBeat: 1 });
+    });
+  });
+
   describe('toggleMetronome', () => {
     describe('on', () => {
       const startMock = jest.fn();
@@ -54,13 +65,18 @@ describe('store mutations', () => {
 
       const state = {
         metronomeOn: true,
-        metronome: newMetronome()
+        metronome: newMetronome(),
+        currentBeat: 3
       };
 
       mutations.toggleMetronome(state);
 
       it('changes the metronomeOn state', () => {
         expect(state.metronomeOn).toEqual(false);
+      });
+
+      it('changes the currentBeat state to its default', () => {
+        expect(state.currentBeat).toEqual(0);
       });
 
       it('calls the stop method on the metronome instance', () => {

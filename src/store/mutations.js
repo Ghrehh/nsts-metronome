@@ -9,14 +9,19 @@ export default {
     state.beatsPerMeasure = payload.beatsPerMeasure;
   },
 
+  changeCurrentBeat(state, payload) {
+    state.currentBeat = payload.currentBeat;
+  },
+
   toggleMetronome(state) {
     state.metronomeOn = !state.metronomeOn;
 
     if (state.metronomeOn) {
-      state.metronome = newMetronome(this.state);
+      state.metronome = newMetronome(this);
       state.metronome.start()
     } else {
       state.metronome.stop();
+      state.currentBeat = 0;
     }
   }
 };

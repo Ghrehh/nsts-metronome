@@ -1,12 +1,12 @@
 import player from './player';
 
 export class Metronome {
-  constructor(state, player) {
+  constructor(store, player) {
     this.player = player;
-    this.state = state;
+    this.state = store.state;
+    this.store = store;
 
     this.on = false;
-    this.currentBeat = 0;
   }
 
   start() {
@@ -19,16 +19,24 @@ export class Metronome {
   }
 
   _playSound() {
-    this.currentBeat === 0 ? this.player.playAccent() : this.player.play();
-    this._changeBeat()
+    this.state.currentBeat === 0 ? this.player.playAccent() : this.player.play();
+  }
+
+  _getNewBeat() {
+    if (this.state.currentBeat >= this.state.beatsPerMeasure - 1) {
+      return 0
+    }
+
+    return this.state.currentBeat + 1;
   }
 
   _changeBeat() {
-    this.currentBeat += 1;
+    if (!this.on) return;
 
-    if (this.currentBeat >= this.state.beatsPerMeasure) {
-      this.currentBeat = 0;
-    }
+    this.store.commit({
+      type: 'changeCurrentBeat',
+      currentBeat: this._getNewBeat()
+    })
   }
 
   _waitTime() {
@@ -42,12 +50,13 @@ export class Metronome {
 
     if (this.on) {
       setTimeout(() => {
+        this._changeBeat()
         this._play();
       }, this._waitTime());
     }
   }
 }
 
-export const newMetronome = (state) => {
-  return new Metronome(state, new player);
+export const newMetronome = (store) => {
+  return new Metronome(store, new player);
 };

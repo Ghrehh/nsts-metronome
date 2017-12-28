@@ -3,11 +3,22 @@ import { Metronome } from '@/lib/metronome';
 jest.useFakeTimers();
 
 describe('Metronome', () => {
-  const state = { bpm: 120, beatsPerMeasure: 4 };
-
   describe('starting the metronome', () => {
+    const state = {
+      bpm: 120,
+      beatsPerMeasure: 4,
+      currentBeat: 0
+    };
+
+    const store = {
+      state,
+      commit: jest.fn(({ currentBeat }) => {
+        state.currentBeat = currentBeat;
+      })
+    };
+
     const player = { play: jest.fn(), playAccent: jest.fn() };
-    const metronome = new Metronome(state, player);
+    const metronome = new Metronome(store, player);
 
     metronome.start()
 
@@ -27,12 +38,29 @@ describe('Metronome', () => {
       expect(player.playAccent).toHaveBeenCalledTimes(30);
     });
 
+    it('calls the store mutation', () => {
+      expect(store.commit).toHaveBeenCalledTimes(119)
+    });
+
     jest.clearAllTimers();
   });
 
   describe('starting and stopping the metronome', () => {
+    const state = {
+      bpm: 120,
+      beatsPerMeasure: 4,
+      currentBeat: 0
+    };
+
+    const store = {
+      state,
+      commit: jest.fn(({ currentBeat }) => {
+        state.currentBeat = currentBeat;
+      })
+    };
+
     const player = { play: jest.fn(), playAccent: jest.fn() };
-    const metronome = new Metronome(state, player);
+    const metronome = new Metronome(store, player);
 
     metronome.start()
     metronome.stop()
@@ -50,6 +78,10 @@ describe('Metronome', () => {
     // The initial hit is immediate and not on a timer.
     it('plays the accented hit once', () => {
       expect(player.playAccent).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls the store mutation', () => {
+      expect(store.commit).toHaveBeenCalledTimes(0)
     });
 
     jest.clearAllTimers();

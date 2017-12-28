@@ -32,10 +32,20 @@
   }
 }
 
-.toggle-metronome-button:hover, .toggle-metronome-button.stop {
+.toggle-metronome-button:hover {
+  @media (min-width: 450px) {
+    .stick-inner {
+      transform-origin: center bottom;
+      animation: pulse 1.5s infinite;
+      transform-origin: bottom 12.9524px;
+      animation-timing-function: linear;
+    }
+  }
+}
+
+.toggle-metronome-button.stop {
   .stick-inner {
     transform-origin: center bottom;
-
     animation: pulse 1.5s infinite;
     transform-origin: bottom 12.9524px;
     animation-timing-function: linear;
