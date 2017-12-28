@@ -54,10 +54,11 @@ export default {
 @import '../style/_colors.scss';
 
 .page {
-  padding: 100px 20px 0;
+  padding: 20px 20px 0;
   background-color: $background-black;
   height: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .change-bpm-modal {
