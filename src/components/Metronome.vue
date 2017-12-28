@@ -1,6 +1,7 @@
 <template>
 <div class="page">
-  <display/>
+  <site-header />
+  <display />
 
   <time-signatures :time-signatures='[]'/>
 
@@ -18,12 +19,14 @@
 </template>
 
 <script>
+import SiteHeader from './SiteHeader';
 import Display from './Display';
 import TimeSignatures from './TimeSignatures';
 import MetronomeSVG from './MetronomeSVG';
 
 export default {
   components: {
+    SiteHeader,
     Display,
     TimeSignatures,
     'metronome-svg': MetronomeSVG
@@ -52,6 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../style/_colors.scss';
+@import '../style/_mixins.scss';
 
 .page {
   padding: 20px 20px 0;
@@ -80,18 +84,6 @@ export default {
   .toggle-metronome-button {
     font-size: 40px;
     padding: 12px 19px;
-  }
-
-  .toggle-metronome-button.start {
-    background-color: $green;
-    color: white;
-
-    &:hover {
-      background-color: $green-hover;
-    }
-  }
-
-  .toggle-metronome-button {
     display: flex;
     align-items: center;
 
@@ -100,12 +92,39 @@ export default {
     }
   }
 
+  .toggle-metronome-button.start {
+    background-color: $green;
+    color: white;
+    @include box-shadow(0, 5px, $green-hover);
+
+    &:hover {
+      position: relative;
+      top: 2px;
+      @include box-shadow(0, 3px, $green-hover);
+    }
+
+    &:active {
+      position: relative;
+      top: 5px;
+      @include box-shadow(0, 0px, $green-hover);
+    }
+  }
+
   .toggle-metronome-button.stop {
     background-color: $red;
     color: white;
+    @include box-shadow(0, 5px, $red-hover);
 
     &:hover {
-      background-color: $red-hover;
+      position: relative;
+      top: 2px;
+      @include box-shadow(0, 3px, $red-hover);
+    }
+
+    &:active {
+      position: relative;
+      top: 5px;
+      @include box-shadow(0, 0px, $red-hover);
     }
   }
 

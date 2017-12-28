@@ -8,6 +8,7 @@
 <style lang="scss">
 @import './style/_reset.scss';
 @import './style/_colors.scss';
+@import './style/_mixins.scss';
 
 @font-face {
   font-family: "envy";
@@ -35,9 +36,17 @@ p, a, div, li, h1, h2, h3, h4, h5 {
 .decrement-button {
   background-color: $red;
   color: white;
+  @include box-shadow(0, 5px, $red-hover)
 
   &:hover {
-    background-color: $red-hover;
+    position: relative;
+    top: 2px;
+    @include box-shadow(0, 3px, $red-hover)
+  }
+
+  &:active {
+    @include box-shadow(0, 0px, $red-hover)
+    top: 5px;
   }
 }
 
@@ -45,9 +54,17 @@ p, a, div, li, h1, h2, h3, h4, h5 {
   background-color: $green;
   color: white;
   padding: 10px 9px 10px 11px;
+  @include box-shadow(0, 5px, $green-hover)
 
   &:hover {
-    background-color: $green-hover;
+    position: relative;
+    top: 2px;
+    @include box-shadow(0, 3px, $green-hover)
+  }
+
+  &:active {
+    @include box-shadow(0, 0px, $green-hover)
+    top: 5px;
   }
 }
 
