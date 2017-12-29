@@ -1,6 +1,10 @@
-# metronome
+# NSTS Metronome
 
-> A Vue.js project
+[NSTS Metronome](https://nsts-metronome.github.io/) is a web based metronome with a slick and user friendly interface.
+
+Currently still a work in progress, with many more features planned.
+
+Project templated with `vue-cli`.
 
 ## Build Setup
 
