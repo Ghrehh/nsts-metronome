@@ -1,23 +1,22 @@
 <template>
 <div class="page">
-  <site-header />
-  <display />
+  <options-menu :visible='optionsOpen' />
+  <div class='main-page'>
+    <site-header />
+    <display />
 
-  <time-signatures :time-signatures='[]'/>
+    <time-signatures :time-signatures='[]'/>
 
-  <div class='buttons-container'>
-    <div v-on:click='toggleMetronomeOn' :class='toggleButtonCSS'>
-      <metronome-svg />
-      <p class='text'>{{ toggleButtonText }}</p>
+    <div class='buttons-container'>
+      <div v-on:click='toggleMetronomeOn' :class='toggleButtonCSS'>
+        <metronome-svg />
+        <p class='text'>{{ toggleButtonText }}</p>
+      </div>
+
+      <div v-on:click='toggleOptionsOpen' :class='optionsButtonCSS'>
+        <gear-svg />
+      </div>
     </div>
-
-    <div v-on:click='toggleOptionsOpen' :class='optionsButtonCSS'>
-
-      <gear-svg />
-    </div>
-    <modal :visible='optionsOpen'>
-      
-    </modal>
   </div>
 </div>
 </template>
@@ -28,14 +27,14 @@ import Display from './Display';
 import TimeSignatures from './TimeSignatures';
 import MetronomeSVG from './MetronomeSVG';
 import GearSVG from './GearSVG';
-import Modal from './Modal';
+import OptionsMenu from './OptionsMenu';
 
 export default {
   components: {
     SiteHeader,
     Display,
     TimeSignatures,
-    Modal,
+    OptionsMenu,
     'metronome-svg': MetronomeSVG,
     'gear-svg': GearSVG
   },
