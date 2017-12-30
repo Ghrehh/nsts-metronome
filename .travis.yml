@@ -2,7 +2,7 @@ language: node_js
 node_js: "7"
 install: npm i
 script: 
- - npm run test
+ - npm run unit
  - npm run build
 
 notifications:
