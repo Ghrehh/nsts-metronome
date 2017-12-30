@@ -13,6 +13,10 @@ export default {
     state.currentBeat = payload.currentBeat;
   },
 
+  toggleOptionsOpen(state) {
+    state.optionsOpen = !state.optionsOpen;
+  },
+
   toggleMetronome(state) {
     state.metronomeOn = !state.metronomeOn;
 

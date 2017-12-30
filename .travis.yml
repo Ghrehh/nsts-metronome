@@ -1,7 +1,9 @@
 language: node_js
 node_js: "7"
 install: npm i
-script: npm run build
+script: 
+ - npm run unit
+ - npm run build
 
 notifications:
   email: false

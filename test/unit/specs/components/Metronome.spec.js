@@ -4,7 +4,8 @@ import Metronome from '@/components/Metronome.vue';
 const testComponents = {
   Display: testComponent('Display'),
   TimeSignatures: testComponent('TimeSignatures'),
-  'metronome-svg': testComponent('MetronomeSVG')
+  'metronome-svg': testComponent('MetronomeSVG'),
+  OptionsMenu: testComponent('OptionsMenu')
 }
 
 describe('Metronome.vue', () => {
@@ -27,6 +28,10 @@ describe('Metronome.vue', () => {
 
     it('renders the MetronomeSVG component', () => {
       expect(textContent).toContain('test MetronomeSVG');
+    });
+
+    it('renders the OptionsMenu component', () => {
+      expect(textContent).toContain('test OptionsMenu');
     });
   });
 

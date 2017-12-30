@@ -1,19 +1,22 @@
 <template>
 <div class="page">
-  <site-header />
-  <display />
+  <options-menu :visible='optionsOpen' />
+  <div class='main-page'>
+    <site-header />
+    <display />
 
-  <time-signatures :time-signatures='[]'/>
+    <time-signatures :time-signatures='[]'/>
 
-  <div class='buttons-container'>
-    <div v-on:click='toggleMetronomeOn' :class='toggleButtonCSS'>
-      <metronome-svg />
-      <p class='text'>{{ toggleButtonText }}</p>
+    <div class='buttons-container'>
+      <div v-on:click='toggleMetronomeOn' :class='toggleButtonCSS'>
+        <metronome-svg />
+        <p class='text'>{{ toggleButtonText }}</p>
+      </div>
+
+      <div v-on:click='toggleOptionsOpen' :class='optionsButtonCSS'>
+        <gear-svg />
+      </div>
     </div>
-
-    <p class='button edit-button' v-if='false'>
-      EDIT
-    </p>
   </div>
 </div>
 </template>
@@ -23,17 +26,24 @@ import SiteHeader from './SiteHeader';
 import Display from './Display';
 import TimeSignatures from './TimeSignatures';
 import MetronomeSVG from './MetronomeSVG';
+import GearSVG from './GearSVG';
+import OptionsMenu from './OptionsMenu';
 
 export default {
   components: {
     SiteHeader,
     Display,
     TimeSignatures,
-    'metronome-svg': MetronomeSVG
+    OptionsMenu,
+    'metronome-svg': MetronomeSVG,
+    'gear-svg': GearSVG
   },
   computed: {
     metronomeOn() {
       return this.$store.state.metronomeOn;
+    },
+    optionsOpen() {
+      return this.$store.state.optionsOpen;
     },
     toggleButtonText() {
       return this.$store.state.metronomeOn ? 'STOP' : 'START';
@@ -41,14 +51,23 @@ export default {
     toggleButtonCSS() {
       const modifier = this.$store.state.metronomeOn ? 'stop' : 'start';
       return `button toggle-metronome-button ${modifier}`;
+    },
+    optionsButtonCSS() {
+      const modifier = this.$store.state.optionsOpen ? 'active' : '';
+      return `button options-button ${modifier}`;
     }
   },
   methods: {
     toggleMetronomeOn() {
       this.$store.commit({
-        type: 'toggleMetronome',
+        type: 'toggleMetronome'
       })
     },
+    toggleOptionsOpen() {
+      this.$store.commit({
+        type: 'toggleOptionsOpen'
+      })
+    }
   }
 };
 </script>
@@ -87,6 +106,7 @@ export default {
     display: flex;
     align-items: center;
     position: relative;
+    margin-right: 10px;
 
     .text {
       margin-left: 8px;
@@ -132,12 +152,24 @@ export default {
     }
   }
 
-  .edit-button {
+  .options-button {
     background-color: $purple;
-    color: white;
+    display: flex;
+    position: relative;
+    @include box-shadow(0, 5px, $purple-hover);
+    padding: 10px 2px;
 
     &:hover {
-      background-color: $purple-hover;
+      @media (min-width: 450px) {
+        top: 2px;
+        @include box-shadow(0, 3px, $purple-hover);
+      }
+    }
+
+    &:active, &.active {
+      position: relative;
+      top: 5px;
+      @include box-shadow(0, 0px, $purple-hover);
     }
   }
 }
