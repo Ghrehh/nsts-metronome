@@ -73,10 +73,10 @@ export default {
   }
 
   .vue-slider-dot {
-    background-color: $background-black;
+    background-color: $background-black !important;
 
     &:hover {
-      background-color: $background-black-hover;
+      background-color: $background-black-hover !important;
     }
   }
 }
@@ -91,10 +91,10 @@ export default {
   }
 
   .vue-slider-dot {
-    background-color: $display-grey;
+    background-color: $display-grey !important;
 
     &:hover {
-      background-color: $display-grey-dark;
+      background-color: $display-grey-dark !important;
     }
   }
 }
