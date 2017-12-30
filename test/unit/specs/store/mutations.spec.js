@@ -37,6 +37,48 @@ describe('store mutations', () => {
     });
   });
 
+
+  describe('changeVolume', () => {
+    const changeVolumeMock = jest.fn();
+
+    const state = {
+      volume: 10,
+      soundPlayer: { changeVolume: changeVolumeMock }
+    };
+
+    const payload = { volume: 5 }
+
+    mutations.changeVolume(state, payload);
+
+    it('changes the volume state', () => {
+      expect(state.volume).toEqual(5);
+    });
+
+    it('calls changeVolume on the SoundPlayer', () => {
+      expect(changeVolumeMock).toBeCalledWith(5);
+    });
+  });
+
+  describe('toggleOptionsOpen', () => {
+    describe('on', () => {
+      const state = { optionsOpen: false };
+      mutations.toggleOptionsOpen(state);
+
+      it('toggles the optionsOpen state', () => {
+        expect(state.optionsOpen).toEqual(true);
+      });
+    });
+
+    describe('off', () => {
+      const state = { optionsOpen: true };
+      mutations.toggleOptionsOpen(state);
+
+      it('toggles the optionsOpen state', () => {
+        expect(state.optionsOpen).toEqual(false);
+      });
+    });
+  });
+
   describe('toggleMetronome', () => {
     describe('on', () => {
       const startMock = jest.fn();

@@ -7,7 +7,8 @@ describe('Metronome', () => {
     const state = {
       bpm: 120,
       beatsPerMeasure: 4,
-      currentBeat: 0
+      currentBeat: 0,
+      soundPlayer: { play: jest.fn(), playAccent: jest.fn() }
     };
 
     const store = {
@@ -17,8 +18,7 @@ describe('Metronome', () => {
       })
     };
 
-    const player = { play: jest.fn(), playAccent: jest.fn() };
-    const metronome = new Metronome(store, player);
+    const metronome = new Metronome(store);
 
     metronome.start()
 
@@ -31,11 +31,11 @@ describe('Metronome', () => {
     });
 
     it('plays the unaccented hit the correct number of times', () => {
-      expect(player.play).toHaveBeenCalledTimes(90);
+      expect(state.soundPlayer.play).toHaveBeenCalledTimes(90);
     });
 
     it('plays the accented hit the correct number of times', () => {
-      expect(player.playAccent).toHaveBeenCalledTimes(30);
+      expect(state.soundPlayer.playAccent).toHaveBeenCalledTimes(30);
     });
 
     it('calls the store mutation', () => {
@@ -49,7 +49,8 @@ describe('Metronome', () => {
     const state = {
       bpm: 120,
       beatsPerMeasure: 4,
-      currentBeat: 0
+      currentBeat: 0,
+      soundPlayer: { play: jest.fn(), playAccent: jest.fn() }
     };
 
     const store = {
@@ -59,8 +60,7 @@ describe('Metronome', () => {
       })
     };
 
-    const player = { play: jest.fn(), playAccent: jest.fn() };
-    const metronome = new Metronome(store, player);
+    const metronome = new Metronome(store);
 
     metronome.start()
     metronome.stop()
@@ -72,15 +72,15 @@ describe('Metronome', () => {
     });
 
     it('doesn\'t play any unaccented notes', () => {
-      expect(player.play).toHaveBeenCalledTimes(0);
+      expect(state.soundPlayer.play).toHaveBeenCalledTimes(0);
     });
 
     // The initial hit is immediate and not on a timer.
     it('plays the accented hit once', () => {
-      expect(player.playAccent).toHaveBeenCalledTimes(1);
+      expect(state.soundPlayer.playAccent).toHaveBeenCalledTimes(1);
     });
 
-    it('calls the store mutation', () => {
+    it('doesn\'t call the store mutation', () => {
       expect(store.commit).toHaveBeenCalledTimes(0)
     });
 

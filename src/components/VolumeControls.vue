@@ -1,6 +1,9 @@
 <template>
 <div class='volume-controls'>
-  <h2 class='title'>Volume <span class='volume'>{{ volume }}</span></h2>
+  <h2 class='title'>
+    Volume <span class='volume-value'>{{ volume }}</span>
+  </h2>
+
   <slider
     cssClass='blue-slider volume-slider'
     :on-value-change='changeVolume'
@@ -40,9 +43,6 @@ export default {
 <style lang="scss">
 @import '../style/_colors.scss';
 .volume-slider {
-  max-width: 300px;
-  margin: auto;
-
   .vue-slider-dot {
     background-color: $display-grey !important;
 
@@ -56,13 +56,17 @@ export default {
 <style lang="scss" scoped>
 @import '../style/_colors.scss';
 
+.volume-controls {
+  margin-bottom: 30px;
+}
+
 .title {
   font-size: 23px;
   color: white;
   margin-bottom: 15px;
 }
 
-.volume {
+.volume-value {
   color: $yellow;
 }
 </style>

@@ -17,13 +17,19 @@ class Player {
   play() {
     this.player.play();
   }
+
+  changeVolume(volume) {
+    const parsedVolume = (volume / 10);
+    this.accentPlayer.volume(parsedVolume);
+    this.player.volume(parsedVolume);
+  }
 }
 
-export default (store) => {
-  const volume = (store.state.volume / 10);
+export default (volume = 10) => {
+  const parsedVolume = (volume / 10);
 
   return new Player(
-    new Howl({ src: [getFile(true)], volume }),
-    new Howl({ src: [getFile()], volume })
+    new Howl({ src: [getFile(true)], volume: parsedVolume }),
+    new Howl({ src: [getFile()], volume: parsedVolume })
   );
 };

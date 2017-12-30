@@ -82,6 +82,7 @@ export default {
   height: 100%;
   text-align: center;
   box-sizing: border-box;
+  animation: fadeIn .5s;
 }
 
 .change-bpm-modal {
@@ -171,6 +172,15 @@ export default {
       top: 5px;
       @include box-shadow(0, 0px, $purple-hover);
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>

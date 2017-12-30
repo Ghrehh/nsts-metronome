@@ -19,6 +19,7 @@ export default {
 
   changeVolume(state, payload) {
     state.volume = payload.volume;
+    state.soundPlayer.changeVolume(state.volume);
   },
 
   toggleMetronome(state) {

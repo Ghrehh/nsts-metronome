@@ -24,6 +24,15 @@ p, a, div, li, h1, h2, h3, h4, h5 {
   font-family: "envy", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: $yellow;
+
+  &:hover {
+    color: $yellow-hover;
+  }
+}
+
 
 .button {
   display: inline-block;

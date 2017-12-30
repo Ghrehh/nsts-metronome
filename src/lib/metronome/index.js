@@ -1,8 +1,6 @@
-import newPlayer from './player';
-
 export class Metronome {
-  constructor(store, player) {
-    this.player = player;
+  constructor(store) {
+    this.soundPlayer = store.state.soundPlayer;
     this.state = store.state;
     this.store = store;
 
@@ -19,7 +17,7 @@ export class Metronome {
   }
 
   _playSound() {
-    this.state.currentBeat === 0 ? this.player.playAccent() : this.player.play();
+    this.state.currentBeat === 0 ? this.soundPlayer.playAccent() : this.soundPlayer.play();
   }
 
   _getNewBeat() {
@@ -58,5 +56,5 @@ export class Metronome {
 }
 
 export const newMetronome = (store) => {
-  return new Metronome(store, newPlayer(store));
+  return new Metronome(store);
 };

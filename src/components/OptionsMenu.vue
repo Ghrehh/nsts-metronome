@@ -1,29 +1,32 @@
 <template>
-  <transition name="drop">
-    <div v-if='visible' class='options-menu'>
-      <div class='options-menu-inner'>
-        <h1 class='options-title'>Options</h1>
+<transition name="drop">
+  <div v-if='visible' class='options-menu'>
+    <div class='options-menu-inner'>
+      <h1 class='options-title'>Options</h1>
 
-        <div class='options'>
-          <volume-controls />
-        </div>
+      <div class='options'>
+        <volume-controls />
+        <about />
+      </div>
 
-        <div v-on:click='toggleOptionsOpen' class='button close-options-menu-button'>
-          <gear-svg />
-          <p>CLOSE</p>
-        </div>
+      <div v-on:click='toggleOptionsOpen' class='button close-options-menu-button'>
+        <gear-svg />
+        <p>CLOSE</p>
       </div>
     </div>
-  </transition>
+  </div>
+</transition>
 </template>
 
 <script>
 import VolumeControls from './VolumeControls';
+import About from './About';
 import GearSVG from './GearSVG';
 
 export default {
   components: {
     VolumeControls,
+    About,
     'gear-svg': GearSVG
   },
   props: {
@@ -74,7 +77,8 @@ export default {
 }
 
 .options {
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
+  max-width: 300px;
 }
 
 .close-options-menu-button {
