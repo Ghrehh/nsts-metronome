@@ -1,5 +1,4 @@
 <template>
-
 <svg class='gear-svg' width="67px" height="68px" viewBox="0 0 67 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
     <desc>Created with Sketch.</desc>
@@ -20,16 +19,13 @@
 </svg>
 </template>
 
-<script>
-</script>
-
 <style lang="scss" scoped>
 .gear-svg {
   opacity: 0.30;
   height: 44px;
 }
 
-.options-button:hover {
+.options-button:hover, .close-options-menu-button:hover {
   @media (min-width: 450px) {
     .gear-svg {
       transform-origin: center;
@@ -39,7 +35,7 @@
   }
 }
 
-.options-button.active {
+.options-button.active, .close-options-menu-button:active {
   .gear-svg {
     transform-origin: center;
     animation: rotate 4s infinite;

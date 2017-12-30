@@ -48,6 +48,7 @@ export default {
   }
 
   .vue-slider-piecewise {
+    border-radius: 2px !important;
   }
 
   .vue-slider-process {
@@ -59,6 +60,42 @@ export default {
     border-radius: 2px !important;
     height: 32px !important;
     top: -11px !important;
+  }
+}
+
+.blue-slider {
+  .vue-slider-piecewise {
+    background-color: $pale-blue;
+  }
+
+  .vue-slider-process {
+    background-color: $blue !important;
+  }
+
+  .vue-slider-dot {
+    background-color: $background-black;
+
+    &:hover {
+      background-color: $background-black-hover;
+    }
+  }
+}
+
+.yellow-slider {
+  .vue-slider-piecewise {
+    background-color: $pale-yellow;
+  }
+
+  .vue-slider-process {
+    background-color: $yellow !important;
+  }
+
+  .vue-slider-dot {
+    background-color: $display-grey;
+
+    &:hover {
+      background-color: $display-grey-dark;
+    }
   }
 }
 </style>

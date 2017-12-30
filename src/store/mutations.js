@@ -17,6 +17,10 @@ export default {
     state.optionsOpen = !state.optionsOpen;
   },
 
+  changeVolume(state, payload) {
+    state.volume = payload.volume;
+  },
+
   toggleMetronome(state) {
     state.metronomeOn = !state.metronomeOn;
 

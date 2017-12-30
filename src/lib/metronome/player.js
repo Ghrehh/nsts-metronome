@@ -19,9 +19,11 @@ class Player {
   }
 }
 
-export default () => {
+export default (store) => {
+  const volume = (store.state.volume / 10);
+
   return new Player(
-    new Howl({ src: [getFile(true)] }),
-    new Howl({ src: [getFile()] })
+    new Howl({ src: [getFile(true)], volume }),
+    new Howl({ src: [getFile()], volume })
   );
 };

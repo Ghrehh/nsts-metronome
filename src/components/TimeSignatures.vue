@@ -15,7 +15,7 @@
     </div>
 
     <slider 
-      cssClass='beats-per-measure-slider'
+      cssClass='yellow-slider beats-per-measure-slider'
       :on-value-change='changeBeatsPerMeasure'
       :value='beatsPerMeasure'
       :min='1'
@@ -74,8 +74,7 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../style/_colors.scss';
 
 .time-signatures-container {
@@ -117,27 +116,13 @@ export default {
     margin: 0 20px;
   }
 }
+</style>
 
+<style lang="scss">
 .beats-per-measure-slider {
   max-width: 300px;
   margin: 0 auto;
   padding: 0 25px;
   box-sizing: border-box;
-
-  .vue-slider-piecewise {
-    background-color: $pale-yellow;
-  }
-
-  .vue-slider-process {
-    background-color: $yellow !important;
-  }
-
-  .vue-slider-dot {
-    background-color: $display-grey;
-
-    &:hover {
-      background-color: $display-grey-dark;
-    }
-  }
 }
 </style>

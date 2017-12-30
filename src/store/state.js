@@ -3,5 +3,6 @@ export default {
   metronomeOn: false,
   optionsOpen: false,
   beatsPerMeasure: 4,
-  currentBeat: 0
+  currentBeat: 0,
+  volume: 10
 };

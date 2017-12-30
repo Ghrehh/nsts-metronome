@@ -1,4 +1,4 @@
-import player from './player';
+import newPlayer from './player';
 
 export class Metronome {
   constructor(store, player) {
@@ -58,5 +58,5 @@ export class Metronome {
 }
 
 export const newMetronome = (store) => {
-  return new Metronome(store, new player);
+  return new Metronome(store, newPlayer(store));
 };

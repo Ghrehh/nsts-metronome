@@ -2,7 +2,12 @@
   <transition name="drop">
     <div v-if='visible' class='options-menu'>
       <div class='options-menu-inner'>
-        <h1 class='options-title'>OPTIONS</h1>
+        <h1 class='options-title'>Options</h1>
+
+        <div class='options'>
+          <volume-controls />
+        </div>
+
         <div v-on:click='toggleOptionsOpen' class='button close-options-menu-button'>
           <gear-svg />
           <p>CLOSE</p>
@@ -13,10 +18,12 @@
 </template>
 
 <script>
+import VolumeControls from './VolumeControls';
 import GearSVG from './GearSVG';
 
 export default {
   components: {
+    VolumeControls,
     'gear-svg': GearSVG
   },
   props: {
@@ -56,13 +63,18 @@ export default {
     opacity: 1;
     transition: opacity .5s ease;
     transition-delay: .5s;
-    padding: 30px;
+    padding: 20px 20px 40px;
   }
 }
 
 .options-title {
   color: white;
   font-size: 40px;
+  margin-bottom: 25px;
+}
+
+.options {
+  margin-bottom: 40px;
 }
 
 .close-options-menu-button {
@@ -71,11 +83,12 @@ export default {
   @include box-shadow(0, 5px, $red-hover);
   position: relative;
   display: flex;
-  max-width: 168px;
-  padding: 10px 10px 10px 1px;
+  max-width: 188px;
+  padding: 10px 14px 10px 4px;
   align-items: center;
   box-sizing: border-box;
   margin: auto;
+  font-size: 40px;
 
 
   &:hover {
@@ -114,10 +127,9 @@ export default {
   height: 0%;
 
   .options-menu-inner {
-  transition: height 0.2s ease;
+    transition: opacity 0.2s ease;
     transition-delay: 0s;
     opacity: 0;
   }
 }
-
 </style>

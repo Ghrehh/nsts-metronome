@@ -12,8 +12,8 @@
         +
       </p>
     </div>
-  <slider 
-    cssClass='bpm-slider'
+  <slider
+    cssClass='blue-slider'
     :on-value-change='changeBPM'
     :value='bpm'
     :min='10'
@@ -60,7 +60,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../style/_colors.scss';
 
 .display {
@@ -89,24 +89,6 @@ export default {
       color: $blue;
       font-size: 35px;
       margin: 0 20px;
-    }
-  }
-
-  .bpm-slider {
-    .vue-slider-piecewise {
-      background-color: $pale-blue;
-    }
-
-    .vue-slider-process {
-      background-color: $blue !important;
-    }
-
-    .vue-slider-dot {
-      background-color: $background-black;
-
-      &:hover {
-        background-color: $background-black-hover;
-      }
     }
   }
 }
